@@ -4,14 +4,16 @@ from django.db import migrations
 
 
 def create_data(apps, schema_editor):
-    student = apps.get_model('students', 'Students')
-    student(name="Joe Silver", email="joe@email.com", document="22342342", phone="00000000").save()
+    student = apps.get_model("students", "Students")
+    student(
+        name="Joe Silver", email="joe@email.com", document="22342342", phone="00000000"
+    ).save()
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('students', '0001_initial'),
+        ("students", "0001_initial"),
     ]
 
     operations = [

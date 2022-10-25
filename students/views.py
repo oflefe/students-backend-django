@@ -1,9 +1,10 @@
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import Students
 from .serializers import *
+
 # Create your views here.
 
 
@@ -13,7 +14,7 @@ def students_list(request):
         data = Students.objects.all()
         serializer = StudentSerializer(data, context={"request": request}, many=True)
         return Response(serializer.data)
-    elif request.method == "POST":
+    if request.method == "POST":
         serializer = StudentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -29,11 +30,13 @@ def students_detail(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "PUT":
-        serializer = StudentSerializer(student, data=request.data, context={"request":request})
+        serializer = StudentSerializer(
+            student, data=request.data, context={"request": request}
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         student.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
