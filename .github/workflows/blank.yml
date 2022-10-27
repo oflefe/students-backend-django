@@ -25,11 +25,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest-django pytest pylint  black isort
       - name: run precommits
         run: |
-          pre-commit
+          pylint .
+          black .
+          isort .
       - name: test
         run: |
           pytest
