@@ -21,8 +21,8 @@ def test_create_student():
 
 @pytest.mark.django_db
 def test_get_students():
-    response = client.get("/api/students/")
-    assert response.status_code == 200
+    res = client.get("/api/students/")
+    assert res.status_code == 200
 
 
 @pytest.mark.django_db
