@@ -1,0 +1,29 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+    -   id: black
+        args: [ '.' ]
+        exclude: ^(migrations/)
+-   repo: https://github.com/pycqa/pylint
+    rev: v2.15.5
+    hooks:
+    -   id: pylint
+        args: [
+        "--rcfile=.pylintrc"
+        ]
+        additional_dependencies:
+            - django
+            - pylint-django
+        exclude: ^students/migrations/
+
+-   repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        name: isort (python)
