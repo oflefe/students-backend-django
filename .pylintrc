@@ -1,8 +1,0 @@
-
-[MASTER]
-init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
-load-plugins=pylint_django
-
-
-disable=
-    C0115, C0114, C0103, E0401, R0903, W0401, C0116, R1710, W0614, W0611, C0415, django-not-configured # missing-module-docstring
